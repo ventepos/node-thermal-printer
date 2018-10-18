@@ -51,7 +51,7 @@ NetPrint.prototype.isPrinterConnected = function(exists){
     exists(false);
     printer.end();
   });
-  
+
   printer.on('timeout', function () {
     exists(false);
     printer.end();

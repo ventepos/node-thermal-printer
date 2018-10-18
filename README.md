@@ -84,6 +84,32 @@ print.getWidth();                                   // Get number of characters 
 - `printer:My Printer Name` - select system printer by name via [Printer](https://www.npmjs.com/package/printer) or [Electron printer](https://www.npmjs.com/package/electron-printer) module module
 - `\\.\COM1` - print via local port or file
 
+#### System Printer Drivers
+When using a system printer, you need to provide the driver.
+Use electron-printer or printer driver:
+```js
+const electron = typeof process !== 'undefined' && process.versions && !!process.versions.electron;
+
+var printer = require("node-thermal-printer");
+printer.init({
+  type: 'epson',
+  interface: 'printer:My Printer',
+  driver: require(electron ? 'electron-printer' : 'printer')
+});
+```
+
+Use a custom printer driver:
+```js
+var printer = require("node-thermal-printer");
+printer.init({
+  type: 'epson',
+  interface: 'printer:My Printer',
+  driver: MyCustomDriver
+});
+
+// you can also set the driver after init:
+printer.setPrinterDriver(MyCustomDriver)
+```
 
 ### Examples
 ```js
