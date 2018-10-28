@@ -83,6 +83,12 @@ printer.printImage('./assets/olaii-logo-black-small.png', function(done){
     { text:"Right", align:"RIGHT", width:0.25 }
   ]);
 
+  printer.tableCustom([
+    { text:"Left", align:"LEFT", cols:15 },
+    { text:"Center", align:"CENTER", cols:10, bold:true },
+    { text:"Right", align:"RIGHT", cols:10 }
+  ]);
+
 
   printer.cut();
   printer.openCashDrawer();
